@@ -25,7 +25,11 @@ const UploadForm = props => {
     };
 
     try {
-      const result = await axios.post('/upload', formData, config);
+      const result = await axios.post(
+        'http://localhost:4000/upload',
+        formData,
+        config
+      );
       console.log({ result });
     } catch (error) {
       console.log(error);
