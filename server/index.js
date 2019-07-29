@@ -28,6 +28,7 @@ app.get('/', (req, res) => res.send('Hello World!'));
 
 app.post('/upload', upload, (req, res, next) => {
   // console.log('Request file ---', req.file);
+  console.log(req.file.originalname + ' uploaded.');
   res.status(200).send('Uploaded: ' + req.file.filename);
 });
 

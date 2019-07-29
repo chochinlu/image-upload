@@ -3,6 +3,16 @@ import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 
+const ImagePreview = props => {
+  return (
+    <div>
+      {props.file && (
+        <img src={URL.createObjectURL(props.file)} alt="pic preview" />
+      )}
+    </div>
+  );
+};
+
 const UploadForm = props => {
   const [file, setFile] = useState(null);
   const [err, setErr] = useState(null);
@@ -54,7 +64,8 @@ const UploadForm = props => {
         />
         <button type="submit">Upload</button>
       </form>
-      {file && <p>Upload: {file.name}</p>}
+      <ImagePreview file={file} />
+
       {uploading && <p>Uploading...</p>}
       {err && <p>{err}</p>}
       {result && <p>{result}</p>}
