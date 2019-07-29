@@ -6,10 +6,12 @@ import './App.css';
 const UploadForm = props => {
   const [file, setFile] = useState(null);
   const [err, setErr] = useState(null);
+  const [result, setResult] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
   const handleFileChange = e => {
     e.preventDefault();
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
     setFile(e.target.files[0]);
   };
 
@@ -25,15 +27,19 @@ const UploadForm = props => {
     };
 
     try {
+      setUploading(true);
       const result = await axios.post(
         'http://localhost:4000/upload',
         formData,
         config
       );
-      console.log({ result });
+      // console.log({ result });
+      setResult(result.data);
     } catch (error) {
       console.log(error);
       setErr(error.message);
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -48,8 +54,10 @@ const UploadForm = props => {
         />
         <button type="submit">Upload</button>
       </form>
-      {file && file.name}
+      {file && <p>Upload: {file.name}</p>}
+      {uploading && <p>Uploading...</p>}
       {err && <p>{err}</p>}
+      {result && <p>{result}</p>}
     </>
   );
 };
