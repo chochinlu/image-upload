@@ -1,26 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Box, Flex, Button, Image } from 'rebass';
-import { FileInput, Label, MyButton } from '../style';
+import { Box, Button } from 'rebass';
+import { FileInput, Label } from '../style';
 import styled from 'styled-components/macro';
-
-const ImagePreview = props => {
-  return (
-    <Flex width={1} justifyContent="center" mb={props.file ? 1 : 0}>
-      {props.file && (
-        <Image
-          src={URL.createObjectURL(props.file)}
-          alt="pic preview"
-          width={1}
-          display="inline-block"
-          css={`
-            max-width: 800px;
-          `}
-        />
-      )}
-    </Flex>
-  );
-};
+import ImagePreview from './ImagePreview';
+import Message from './Message';
 
 const UploadForm = props => {
   const [file, setFile] = useState(null);
@@ -112,9 +96,10 @@ const UploadForm = props => {
           Upload
         </Button>
       </form>
-      {uploading && <p>Uploading...</p>}
-      {err && <p>{err}</p>}
-      {result && <p>{result}</p>}
+      {/* <Message>Uploading...</Message> */}
+      {uploading && <Message>Uploading...</Message>}
+      {err && <Message>{err}</Message>}
+      {result && <Message>{result}</Message>}
     </Box>
   );
 };
