@@ -5,7 +5,8 @@ const colors = {
   text: '#FFFFFF',
   primaryText: '#212121',
   secondaryText: '#757575',
-  divider: '#BDBDBD'
+  divider: '#BDBDBD',
+  accent: '#00BCD4'
 };
 
 const theme = {

@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Box, Button, Image } from 'rebass';
-import { FileInput, Label } from '../style';
+import { Box, Flex, Button, Image } from 'rebass';
+import { FileInput, Label, MyButton } from '../style';
+import styled from 'styled-components/macro';
 
 const ImagePreview = props => {
   return (
-    <Box width="60vw">
+    <Flex width={1} justifyContent="center" mb={props.file ? 1 : 0}>
       {props.file && (
         <Image
           src={URL.createObjectURL(props.file)}
           alt="pic preview"
           width={1}
+          display="inline-block"
+          css={`
+            max-width: 800px;
+          `}
         />
       )}
-    </Box>
+    </Flex>
   );
 };
 
@@ -58,7 +63,7 @@ const UploadForm = props => {
   };
 
   return (
-    <Box py={5}>
+    <Box py={5} width={1}>
       <form onSubmit={handleSubmit}>
         <FileInput
           type="file"
@@ -75,7 +80,7 @@ const UploadForm = props => {
           htmlFor="myImage"
           border="2px solid"
           borderColor="text"
-          width="60vw"
+          width={1}
           display="block"
           textAlign="center"
         >
@@ -84,7 +89,7 @@ const UploadForm = props => {
         <ImagePreview file={file} />
         <Button
           type="submit"
-          bg="primary"
+          bg={file ? 'accent' : 'primary'}
           color={file ? 'text' : 'divider'}
           borderRadius={0}
           my={2}
@@ -93,6 +98,16 @@ const UploadForm = props => {
           border="2px solid"
           borderColor={file ? 'text' : 'divider'}
           disabled={!file}
+          css={
+            file &&
+            `
+            cursor: pointer;
+            &:active {
+              position:relative;
+              top:1px;
+            }
+          `
+          }
         >
           Upload
         </Button>

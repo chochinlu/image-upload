@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading, Flex } from 'rebass';
+import { Heading, Flex, Card } from 'rebass';
 import { GlobalStyle } from './style';
 import { ThemeProvider } from 'styled-components';
 import theme from './theme';
@@ -11,19 +11,25 @@ function App() {
       <GlobalStyle theme={theme} />
       <ThemeProvider theme={theme}>
         <Flex justifyContent="center">
-          <Flex
-            flexDirection="column"
-            alignItems="center"
-            width="80vw"
-            backgroundColor="primary"
-            margin={4}
-            py={3}
+          <Card
+            borderRadius={8}
+            boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
+            mt={4}
+            width={[1, 1, '50%']}
           >
-            <Heading color="text" fontSize={4} pb={3}>
-              Image Uploader
-            </Heading>
-            <UploadForm />
-          </Flex>
+            <Flex
+              flexDirection="column"
+              alignItems="center"
+              backgroundColor="primary"
+              p={5}
+              width="100%"
+            >
+              <Heading color="text" fontSize={4} pb={3}>
+                Image Uploader
+              </Heading>
+              <UploadForm />
+            </Flex>
+          </Card>
         </Flex>
       </ThemeProvider>
     </>
