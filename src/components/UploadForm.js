@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Box, Button } from 'rebass';
+import { Flex, Box, Button, Text } from 'rebass';
 import { FileInput, Label } from '../style';
 import styled from 'styled-components/macro';
 import ImagePreview from './ImagePreview';
 import Message from './Message';
+import { Upload } from 'styled-icons/boxicons-regular/Upload';
 
 const UploadForm = props => {
   const [file, setFile] = useState(null);
@@ -65,11 +66,12 @@ const UploadForm = props => {
           border="2px solid"
           borderColor="text"
           width={1}
-          display="block"
+          display="inline-block"
           textAlign="center"
         >
-          {file ? file.name : 'Choose a file...'}
+          <Text ml={1}>{file ? file.name : 'Choose a file...'}</Text>
         </Label>
+
         <ImagePreview file={file} />
         <Button
           type="submit"
@@ -93,7 +95,10 @@ const UploadForm = props => {
           `
           }
         >
-          Upload
+          <Flex justifyContent="center" textAlign="center">
+            <Upload size="4rem" />
+            <Text ml={1}> Upload</Text>
+          </Flex>
         </Button>
       </form>
       {/* <Message>Uploading...</Message> */}
