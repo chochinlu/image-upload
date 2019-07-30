@@ -14,7 +14,7 @@ function App() {
           <Card
             borderRadius={8}
             boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
-            mt={4}
+            mt={2}
             width={[1, 1, '50%']}
           >
             <Flex
@@ -24,7 +24,7 @@ function App() {
               p={5}
               width="100%"
             >
-              <Heading color="text" fontSize={4} pb={3}>
+              <Heading color="text" fontSize={2} pb={1}>
                 Image Uploader
               </Heading>
               <UploadForm />

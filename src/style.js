@@ -43,10 +43,10 @@ export const FileInput = styled.input`
 
 export const Label = styled.label(
   {
-    cursor: 'pointer',
-    '&:hover': {
-      'font-weight': 'bold'
-    }
+    cursor: 'pointer'
+    // '&:hover': {
+    //   'font-weight': 'bold'
+    // }
   },
   fontSize,
   border,

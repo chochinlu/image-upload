@@ -47,7 +47,7 @@ const UploadForm = props => {
   };
 
   return (
-    <Box py={5} width={1}>
+    <Box pt={5} pb={3} width={1}>
       <form onSubmit={handleSubmit}>
         <FileInput
           type="file"
@@ -58,7 +58,7 @@ const UploadForm = props => {
         />
 
         <Label
-          fontSize={2}
+          fontSize={file ? 1 : 2}
           py={3}
           mb={3}
           htmlFor="myImage"
