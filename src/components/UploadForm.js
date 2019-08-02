@@ -16,6 +16,9 @@ const UploadForm = props => {
   const handleFileChange = e => {
     e.preventDefault();
     // console.log(e.target.files[0]);
+    if (result) {
+      setResult(null);
+    }
     setFile(e.target.files[0]);
   };
 
@@ -47,6 +50,8 @@ const UploadForm = props => {
     }
   };
 
+  const buttonAvaliable = () => file && !result;
+
   return (
     <Box pt={5} pb={3} width={1}>
       <form onSubmit={handleSubmit}>
@@ -75,15 +80,15 @@ const UploadForm = props => {
         <ImagePreview file={file} />
         <Button
           type="submit"
-          bg={file ? 'accent' : 'primary'}
-          color={file ? 'text' : 'divider'}
+          bg={buttonAvaliable() ? 'accent' : 'primary'}
+          color={buttonAvaliable() ? 'text' : 'divider'}
           borderRadius={0}
           my={2}
           fontSize={2}
           width="100%"
           border="2px solid"
-          borderColor={file ? 'text' : 'divider'}
-          disabled={!file}
+          borderColor={buttonAvaliable() ? 'text' : 'divider'}
+          disabled={!file || result}
           css={
             file &&
             `
